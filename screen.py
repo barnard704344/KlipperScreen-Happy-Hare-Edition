@@ -483,6 +483,9 @@ class KlipperScreen(Gtk.Window):
         if self.popup_message is None:
             return False
         self.popup_message.popdown()
+        for child in self.popup_message.get_children():
+            child.destroy()
+        self.popup_message.destroy()
         if self.popup_timeout is not None:
             GLib.source_remove(self.popup_timeout)
             self.popup_timeout = None

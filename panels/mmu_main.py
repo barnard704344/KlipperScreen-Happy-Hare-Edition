@@ -663,8 +663,7 @@ class Panel(ScreenPanel):
         filament_pos = mmu['filament_pos']
         filament_direction = mmu['filament_direction']
         gate_color = mmu['gate_color']
-        cs = self._printer.get_config_section("mmu")
-        gate_homing_endstop = cs['gate_homing_endstop']
+        gate_homing_endstop = mmu.get('gate_homing_endstop', self._printer.get_config_section("mmu").get('gate_homing_endstop', 'encoder'))
 
         arrow = "▶"
         line = "━"
